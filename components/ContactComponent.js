@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 
-const styles = {
+const styles = StyleSheet.create({
     text: {
         lineHeight: 35
     }
-}
+})
 
 class Contact extends Component {
     

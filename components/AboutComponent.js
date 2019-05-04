@@ -30,10 +30,10 @@ class Leaders extends Component {
 
     render() {
 
-        const renderLeader = ({item, index}) => {
+        const renderLeader = ({ item }) => {
             return (
                 <ListItem
-                    key={index}
+                    id={item.id}
                     title={item.name}
                     subtitle={item.description}
                     leftAvatar={{ source: require('./images/alberto.png') }}
