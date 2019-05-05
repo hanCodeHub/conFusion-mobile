@@ -66,7 +66,7 @@ class About extends Component {
         return (
             <ScrollView>
                 <History />
-                <Leaders />
+                <Leaders leaders={this.props.leaders}/>
             </ScrollView>
         )
     }
