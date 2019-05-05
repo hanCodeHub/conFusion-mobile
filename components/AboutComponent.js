@@ -30,10 +30,6 @@ const History = () => {
 }
 
 class Leaders extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { leaders: LEADERS }
-    }
 
     render() {
 
