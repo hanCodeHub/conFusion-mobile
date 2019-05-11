@@ -9,6 +9,7 @@ import Home from './HomeComponent';
 import About from './AboutComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
+import Favorites from './FavoriteComponent';
 import Contact from './ContactComponent';
 import Reservation from './ReservationComponent';
 
@@ -135,6 +136,23 @@ const ReservationNavigator = createStackNavigator({
         })
     });
 
+const FavoritesNavigator = createStackNavigator({
+    Favorites: { screen: Favorites }
+}, {
+        navigationOptions: ({ navigation }) => ({
+            headerStyle: {
+                backgroundColor: "#512DA8"
+            },
+            headerTitleStyle: {
+                color: "#fff"
+            },
+            headerTintColor: "#fff",
+            headerLeft: <Icon name="menu" size={24}
+                color='white'
+                onPress={() => navigation.toggleDrawer()} />
+        })
+    })
+
 const CustomDrawerContentComponent = (props) => (
     <ScrollView>
         <SafeAreaView
@@ -143,7 +161,7 @@ const CustomDrawerContentComponent = (props) => (
         >
             <View style={styles.drawerHeader}>
                 <View style={{ flex: 1 }}>
-                    <Image 
+                    <Image
                         source={require('./images/logo.png')}
                         style={styles.drawerImage}
                     />
@@ -234,10 +252,26 @@ const MainNavigator = createDrawerNavigator({
                 />
             )
         }
+    },
+    Favorites: {
+        screen: FavoritesNavigator,
+        navigationOptions: {
+            title: 'My Favorites',
+            drawerLabel: 'My Favorites',
+            drawerIcon: ({ tintColor, focused }) => (
+                <Icon
+                    name='heart'
+                    type='font-awesome'
+                    size={24}
+                    color={tintColor}
+                />
+            ),
+        }
     }
-  }, {
-      drawerBackgroundColor: '#D1C4E9',
-      contentComponent: CustomDrawerContentComponent
+},
+    {
+        drawerBackgroundColor: '#D1C4E9',
+        contentComponent: CustomDrawerContentComponent
     });
 
 class Main extends Component {
