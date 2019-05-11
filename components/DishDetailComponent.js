@@ -66,7 +66,15 @@ function RenderComments(props) {
         return(
             <View key={index} style={{ margin: 10 }}>
                 <Text style={{ fontSize: 14 }}>{item.comment}</Text>
-                <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
+                <View style={styles.commentRating}>
+                    <Rating 
+                        startingValue={item.rating} 
+                        imageSize={15}
+                        style={styles.commentRating}
+                        readonly
+                    />
+                </View>
+                
                 <Text style={{ fontSize: 12 }}>
                     {`-- ${item.author}, ${item.date}`}
                 </Text>
@@ -224,6 +232,11 @@ const styles = StyleSheet.create({
     },
     formButton: {
         flex: 1,
+    },
+    commentRating: {
+        flexDirection: 'row',
+        alignContent: 'flex-start',
+        justifyContent: 'flex-start',
     }
 })
 
