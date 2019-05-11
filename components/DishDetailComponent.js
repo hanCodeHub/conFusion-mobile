@@ -68,7 +68,7 @@ function RenderComments(props) {
                 <Text style={{ fontSize: 14 }}>{item.comment}</Text>
                 <View style={styles.commentRating}>
                     <Rating 
-                        startingValue={item.rating} 
+                        startingValue={parseInt(item.rating)} 
                         imageSize={15}
                         style={styles.commentRating}
                         readonly
@@ -129,7 +129,6 @@ class DishDetail extends Component {
     }
 
     handleComment = (dishId) => () => {
-        console.log(JSON.stringify(this.state));
         
         const date = new Date().toISOString();
 

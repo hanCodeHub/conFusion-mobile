@@ -3,7 +3,7 @@
         "actions": {},
         "state": {
             "routeName": "Favorites",
-            "key": "id-1557596917448-5"
+            "key": "id-1557598553045-5"
         }
     },
     "dishes": {
@@ -52,5 +52,7 @@
             }
         ]
     },
-    "favorites": []
+    "favorites": [
+        0
+    ]
 }
