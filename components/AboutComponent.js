@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, ScrollView, View, Text, StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
@@ -58,25 +59,29 @@ class Leaders extends Component {
         } else if (this.props.leaders.errMess) {
             return (
                 <ScrollView>
-                    <History />
-                    <Card title='Corporate Leadership'>
-                        <Text>{this.props.leaders.errMess}</Text>
-                    </Card>
+                    <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>    
+                        <History />
+                        <Card title='Corporate Leadership'>
+                            <Text>{this.props.leaders.errMess}</Text>
+                        </Card>
+                    </Animatable.View>
                 </ScrollView>
             )
         } else {
             return (
-                <Card title='Corporate Leadership'>
-                    <FlatList 
-                        data={this.props.leaders.leaders}
-                        renderItem={renderLeader}
-                        keyExtractor={item => item.id.toString()}
-                    />
-                </Card>
+                <ScrollView>
+                    <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
+                        <Card title='Corporate Leadership'>
+                            <FlatList
+                                data={this.props.leaders.leaders}
+                                renderItem={renderLeader}
+                                keyExtractor={item => item.id.toString()}
+                            />
+                        </Card>
+                    </Animatable.View>
+                </ScrollView>
             )
         }
-
-
     }
 }
 
