@@ -38,11 +38,11 @@ function RenderDish(props) {
         onStartShouldSetPanResponder: (e, gestureState) => {
             return true;
         },
-        onPanResponderGrant: () => {
+        onPanResponderGrant: () => { // define what happens when the gesture starts
             this.view.rubberBand(1000)
                 .then(endState => console.log(endState.finished ? 'finished' : 'cancelled'))
         },
-        onPanResponderEnd: (e, gestureState) => {
+        onPanResponderEnd: (e, gestureState) => { // what happens when gesture ends
             if (recognizeDrag(gestureState))
                 Alert.alert(
                     'Add to Favorites?', // alert title and body
