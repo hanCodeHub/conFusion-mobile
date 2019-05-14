@@ -29,10 +29,17 @@ function RenderDish(props) {
 
     const recognizeDrag = ({ moveX, moveY, dx, dy}) => {
         if (dx < -200) // indicates a right to left gesture of more than 200
-            return true;
-        else   
-            return false;
+            return 'right-to-left';
+        else if (dx > 200)
+            return 'left-to-right';
+        else return false
     }
+
+    // const recognizeLeftDrag = ({ moveX, moveY, dx, dy}) => {
+    //     if (dx > 200) // indicates a left to left gesture of more than 200
+    //         return true;
+    //     else return false;
+    // }
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: (e, gestureState) => {
@@ -43,7 +50,7 @@ function RenderDish(props) {
                 .then(endState => console.log(endState.finished ? 'finished' : 'cancelled'))
         },
         onPanResponderEnd: (e, gestureState) => { // what happens when gesture ends
-            if (recognizeDrag(gestureState))
+            if (recognizeDrag(gestureState) === 'right-to-left')
                 Alert.alert(
                     'Add to Favorites?', // alert title and body
                     'Are you sure you wish to add ' + dish.name + ' to your favorites?',
@@ -60,7 +67,9 @@ function RenderDish(props) {
                     ],
                     { cancelable: false }
                 )
-
+            else if (recognizeDrag(gestureState) === 'left-to-right')
+                props.onCommentPress();
+            
             return true;
         }
     });
