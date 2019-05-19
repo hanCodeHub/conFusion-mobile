@@ -72,7 +72,7 @@ class Home extends Component {
                 duration: 8000, // 8 second duration
                 easing: Easing.linear
             }
-        ).start(() => this.animate());
+        ).start(() => this.animate()); // calls function when animation finishes
     }
 
     render() {

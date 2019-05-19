@@ -27,7 +27,7 @@ function RenderDish(props) {
     
     handleViewRef = ref => this.view = ref;
 
-    const recognizeDrag = ({ moveX, moveY, dx, dy}) => {
+    const recognizeDrag = ({ moveX, moveY, dx, dy}) => { // gesture state contains these props
         if (dx < -200) // indicates a right to left gesture of more than 200
             return 'right-to-left';
         else if (dx > 200)
